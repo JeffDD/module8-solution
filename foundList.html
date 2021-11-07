@@ -1,0 +1,17 @@
+<div ng-if="ctrl.items.length > 0">
+    <ul>
+        <li ng-repeat="item in ctrl.items">
+             <span>
+            <button class="btn btn-danger btn-xs align-left"
+                    ng-click="ctrl.onRemove({index: $index})">Don't want this one!</button>
+            </span>
+            <span class="align-middle">
+            {{ item.name }}
+            </span>
+
+        </li>
+    </ul>
+</div>
+<div ng-if="ctrl.items.length == 0">
+    <h2>Nothing found</h2>
+</div>
