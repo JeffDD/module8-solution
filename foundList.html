@@ -6,12 +6,11 @@
                     ng-click="ctrl.onRemove({index: $index})">Don't want this one!</button>
             </span>
             <span class="align-middle">
-            {{ item.name }}
+            {{ item.name }}, {{item.short_name}}, {{item.description}}
             </span>
-
         </li>
     </ul>
 </div>
-<div ng-if="ctrl.items.length == 0">
+<div ng-if="ctrl.searchPerformed === true && ctrl.items.length == 0">
     <h2>Nothing found</h2>
 </div>

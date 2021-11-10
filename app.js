@@ -13,7 +13,8 @@
       templateUrl: "foundList.html",
       scope: {
         items: "<",
-        onRemove: '&'
+        onRemove: '&',
+        searchPerformed: "<"
       },
       controller: NarrowItDownController,
       controllerAs: "ctrl",
@@ -24,13 +25,16 @@
   NarrowItDownController.$inject = ["MenuSearchService"];
   function NarrowItDownController(MenuSearchService) {
     const ctrl = this;
+    ctrl.searchPerformed = false;
     ctrl.searchTerm = ""
     ctrl.found = []
     ctrl.dontWant = []
 
     ctrl.onNarrowDown = function () {
+      ctrl.searchPerformed = true
       MenuSearchService.getMatchedMenuItems(ctrl.searchTerm).then( function (foundList){
           ctrl.found = foundList
+      }).finally(function() {
       })
     }
 
@@ -44,7 +48,6 @@
     let service = this;
 
     service.getMatchedMenuItems = function (searchTerm) {
-
       if (searchTerm === "") {
         return Promise.resolve([])
       }

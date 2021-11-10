@@ -53,4 +53,5 @@ input[type="text"] {
 
 li {
   list-style-type: none;
+  padding: 5px;
 }
